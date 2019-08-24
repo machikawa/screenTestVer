@@ -13,6 +13,7 @@
 		795533212310C5B5007D7304 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795533202310C5B5007D7304 /* Assets.xcassets */; };
 		795533242310C5B5007D7304 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 795533222310C5B5007D7304 /* LaunchScreen.storyboard */; };
 		79EF4A0A2310E2E000DCB1A7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF4A092310E2E000DCB1A7 /* Constants.swift */; };
+		79EF4A0C2310EDB800DCB1A7 /* expandPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF4A0B2310EDB800DCB1A7 /* expandPicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		795533232310C5B5007D7304 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		795533252310C5B5007D7304 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79EF4A092310E2E000DCB1A7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79EF4A0B2310EDB800DCB1A7 /* expandPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expandPicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				795533222310C5B5007D7304 /* LaunchScreen.storyboard */,
 				795533252310C5B5007D7304 /* Info.plist */,
 				79EF4A092310E2E000DCB1A7 /* Constants.swift */,
+				79EF4A0B2310EDB800DCB1A7 /* expandPicViewController.swift */,
 			);
 			path = animationTest;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				7955331C2310C5B3007D7304 /* ViewController.swift in Sources */,
 				7955331A2310C5B3007D7304 /* AppDelegate.swift in Sources */,
 				79EF4A0A2310E2E000DCB1A7 /* Constants.swift in Sources */,
+				79EF4A0C2310EDB800DCB1A7 /* expandPicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

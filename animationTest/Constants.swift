@@ -20,4 +20,7 @@ class Constants {
     
     // タイマー値 
     var interval2:Double = 2
+    
+    // 初期画面から拡大画面
+    var expanderSegue: String = "expander"
 }

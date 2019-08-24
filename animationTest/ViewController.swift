@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var saiseiBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var prevBtn: UIButton!
+    
     // 画像集 // Refuctor1 8/24-1 画像を配列に
     let imageArray = [UIImage(named: "d001"), UIImage(named: "d002"), UIImage(named: "beer.jpg")]
     // 画像インデクス
@@ -21,7 +22,8 @@ class ViewController: UIViewController {
     // デフォルトの再生状態。タイマーのインスタンス化
     var isPlay:Bool = false
     var timer:Timer!
-    
+
+////////////////// VIEW ACTIONS //////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
         // 中央のスライドの初期処理
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
         saiseiBtn.setImage(Constants.init().startBtn2, for: .normal) // 中央の再生ボタンのイメージの設定
         self.isPlay = false          // 画面ロード時に再生ボタンの再生状況を初期化
     }
-////////////////// ACTIONS //////////////////
+////////////////// BUTTON ACTIONS //////////////////
     // QQ疑問！！  sender の Any と UIButton の違いと、そもそも Sender の定義が今ひとつようわからん。 宣言の前のアンダーバーも。。
     // ボタン押下のアクション。
     @IBAction func nextBtn(_ sender: Any) {
@@ -49,6 +51,14 @@ class ViewController: UIViewController {
             pushSaiseiButton(Constants.init().stopBtn2, true, Constants.init().inactiveBtnColor2)
         }
     }
+
+    @IBAction func onTappedImage(_ sender: Any) {
+        performSegue(withIdentifier: "expander", sender: (Any).self)
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+    }
+
 ////////////////// FUNCTIONS //////////////////
     // スライドの画像をセットする // Refuctor1 8/24-1 配列を使ったらとてもがぞう変更が楽になった
     func screenPictureSetter(_ indicator: Int) {
@@ -88,9 +98,10 @@ class ViewController: UIViewController {
             self.timer = nil
         }
     }
-    
     // タイマーのアップデート処理
     @objc func timerUpdate(_ timer: Timer) {
         changePicture(1)
     }
+    
+    
 }
