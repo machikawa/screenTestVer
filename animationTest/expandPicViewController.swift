@@ -13,12 +13,14 @@ class expandPicViewController: UIViewController {
     @IBOutlet weak var expandedPicture: UIImageView!
     var receivedPicture: UIImage!
     
+    @IBOutlet weak var detailExplaination: UITextView!
+    var receivedExplaination: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         expandedPicture.image = receivedPicture
+        detailExplaination.text = receivedExplaination
     }
-    
-
     /*
     // MARK: - Navigation
 

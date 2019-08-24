@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var prevBtn: UIButton!
     
     // 画像集 // Refuctor1 8/24-1 画像を配列に refactor-3 8/24
-//    let imageArray = [UIImage(named: "d001"), UIImage(named: "d002"), UIImage(named: "beer.jpg")]
-    let imageArray = [UIImage(named:"MRNUC"),UIImage(named:"ttw"),UIImage(named:"SKT"),UIImage(named:"EITI"),UIImage(named:"MGRGW")]
+    let imageArray = Constants.init().imageArray2
+    let expArray = Constants.init().expArray2
     
     // 画像インデクス
     var imageIndicator:Int = 0
@@ -60,6 +60,7 @@ class ViewController: UIViewController {
         if segue.identifier == "expander" {
             let epVC = segue.destination as! expandPicViewController
             epVC.receivedPicture = imageArray[(self.imageIndicator)]
+            epVC.receivedExplaination = expArray[(self.imageIndicator)]
         }
     }
     
