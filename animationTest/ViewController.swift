@@ -53,7 +53,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onTappedImage(_ sender: Any) {
-        performSegue(withIdentifier: "expander", sender: (Any).self)
+        performSegue(withIdentifier: "expander", sender: (Any).self)        
+        print("tapped!!")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "expander" {
+            let epVC = segue.destination as! expandPicViewController
+            epVC.receivedPicture = imageArray[(self.imageIndicator)]
+        }
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
