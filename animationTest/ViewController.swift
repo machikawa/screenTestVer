@@ -18,13 +18,13 @@ class ViewController: UIViewController {
     let image1 = UIImage(named: "d001")
     let image2 = UIImage(named: "d002")
     let image3 = UIImage(named: "beer.jpg")
-//    let imageSet = [image1,image2,image3]
+    let imageSet = [image1,image2,image3]
     // ボタンのイメージ
     let startBtn = UIImage(named: "saisei.png")
     let stopBtn = UIImage(named: "stop.jpg")
     
     // ボタンの色
-    let activeBtnColor = UIColor.green
+    let activeBtnColor = UIColor.blue
     let inactiveBtnColor = UIColor.gray
     
     // 画像の数、インデクス
@@ -34,6 +34,9 @@ class ViewController: UIViewController {
     // デフォルトの再生状態。タイマーのインスタンス化
     var isPlay:Bool = false
     var timer:Timer!
+    
+    // タイマー値
+    var interval:Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,15 +63,30 @@ class ViewController: UIViewController {
     // QQ疑問！！
     // sender の Any と UIButton の違いと、そもそも Sender の定義が今ひとつようわからん。 宣言の前のアンダーバーも。。
     
-    // 次へボタン押下のアクション。
+    // ボタン押下のアクション。
     @IBAction func nextBtn(_ sender: Any) {
         changeImageByBtn(1) // 一つすすむ
     }
-    
+
     @IBAction func prevBtn(_ sender: Any) {
         changeImageByBtn(-1) // 一つもどる
     }
     
+    @IBAction func saiseiBtn(_ sender: Any) {
+        // 再生-> 停止
+        if self.isPlay  {
+            pushSaiseiButton(startBtn, false, activeBtnColor, true)
+            // 自動再生をやめる
+            self.timer.invalidate()
+            self.timer = nil
+            // 停止ー＞再生
+        } else if !self.isPlay {
+            pushSaiseiButton(stopBtn, true, inactiveBtnColor,false)
+            // 自動再生を開始する
+            self.timer = Timer.scheduledTimer(timeInterval: TimeInterval(interval), target: self, selector: #selector(timerUpdate(_:)), userInfo: nil, repeats: true)
+        }
+
+    }
     // 次へ戻るボタン押下時の詳細な処理。一応、進む数を１以外にすることも考えてIntで受ける。Boolでもよかったのだが。
     func changeImageByBtn(_ changeIndex: Int) {
         // 画像インジケーターの変更処理
@@ -85,9 +103,24 @@ class ViewController: UIViewController {
                 self.imageIndicator -= 1
             }
         }
-        // スクリーンイメージの設定
-        screenPictureSetter(self.imageIndicator)
+        screenPictureSetter(self.imageIndicator)         // スクリーンイメージの設定
     }
+
+    // 再生ボタン押下時の処理
+    func pushSaiseiButton(_ buttonimage : UIImage!, _ playstate: Bool, _ buttonColor: UIColor,
+                    _ isButtonEnabled: Bool ){
+        self.saiseiBtn.setImage(buttonimage, for: .normal)
+        self.isPlay = playstate
+        self.nextBtn.setTitleColor(buttonColor, for: .normal)
+        self.prevBtn.setTitleColor(buttonColor, for: .normal)
+        self.nextBtn.isEnabled = isButtonEnabled
+        self.nextBtn.isEnabled = isButtonEnabled
+    }
+
+    @objc func timerUpdate(_ timer: Timer) {
+        changeImageByBtn(1)
+    }
+
 }
 // for commit
 

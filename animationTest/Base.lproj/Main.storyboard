@@ -26,6 +26,9 @@
                                 <rect key="frame" x="197" y="529" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Saise"/>
+                                <connections>
+                                    <action selector="saiseiBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y21-yJ-J8b"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-qy-8oB">
                                 <rect key="frame" x="308" y="529" width="32" height="30"/>
