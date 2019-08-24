@@ -15,8 +15,6 @@ class expandPicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        expandedPicture.frame = CGRect(x:0, y:0, width : 800, height : 800) // スライド絵のサイズをいじる
         expandedPicture.image = receivedPicture
     }
     

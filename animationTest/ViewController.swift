@@ -15,8 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var prevBtn: UIButton!
     
-    // 画像集 // Refuctor1 8/24-1 画像を配列に
-    let imageArray = [UIImage(named: "d001"), UIImage(named: "d002"), UIImage(named: "beer.jpg")]
+    // 画像集 // Refuctor1 8/24-1 画像を配列に refactor-3 8/24
+//    let imageArray = [UIImage(named: "d001"), UIImage(named: "d002"), UIImage(named: "beer.jpg")]
+    let imageArray = [UIImage(named:"MRNUC"),UIImage(named:"ttw"),UIImage(named:"SKT"),UIImage(named:"EITI"),UIImage(named:"MGRGW")]
+    
     // 画像インデクス
     var imageIndicator:Int = 0
     // デフォルトの再生状態。タイマーのインスタンス化
@@ -26,18 +28,16 @@ class ViewController: UIViewController {
 ////////////////// VIEW ACTIONS //////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 中央のスライドの初期処理
-        screenPicture.frame = CGRect(x:0, y:150, width : 400, height : 400) // スライド絵のサイズをいじる
+        // 中央のスライドの初期処理 refactor-3 8/22 Frameによる座標等指定の禁止と、saiseiBtn のボタンタイプ変更
         screenPicture.isUserInteractionEnabled = true // スライドへのタッチをゆうこうにする。
         screenPictureSetter(self.imageIndicator) // スライドの絵の設定
 
         // 再生ボタンの初期処理, 初期は再生状況はオフ。
-        saiseiBtn.setImage(Constants.init().startBtn2, for: .normal) // 中央の再生ボタンのイメージの設定
+        saiseiBtn.setImage(Constants.init().startBtn, for: .normal) // 中央の再生ボタンのイメージの設定
         self.isPlay = false          // 画面ロード時に再生ボタンの再生状況を初期化
     }
 ////////////////// BUTTON ACTIONS //////////////////
-    // QQ疑問！！  sender の Any と UIButton の違いと、そもそも Sender の定義が今ひとつようわからん。 宣言の前のアンダーバーも。。
-    // ボタン押下のアクション。
+    // ボタン押下時ののアクション。
     @IBAction func nextBtn(_ sender: Any) {
         changePicture(1) // 一つすすむ
     }
@@ -46,15 +46,14 @@ class ViewController: UIViewController {
     }
     @IBAction func saiseiBtn(_ sender: Any) {
         if self.isPlay  {
-            pushSaiseiButton(Constants.init().startBtn2, false, Constants.init().activeBtnColor2)
+            pushSaiseiButton(Constants.init().startBtn, false, Constants.init().activeBtnColor)
         } else if !self.isPlay {
-            pushSaiseiButton(Constants.init().stopBtn2, true, Constants.init().inactiveBtnColor2)
+            pushSaiseiButton(Constants.init().stopBtn, true, Constants.init().inactiveBtnColor)
         }
     }
-
+    
     @IBAction func onTappedImage(_ sender: Any) {
-        performSegue(withIdentifier: "expander", sender: (Any).self)        
-        print("tapped!!")
+        performSegue(withIdentifier: "expander", sender: (Any).self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,7 +65,7 @@ class ViewController: UIViewController {
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
     }
-
+    
 ////////////////// FUNCTIONS //////////////////
     // スライドの画像をセットする // Refuctor1 8/24-1 配列を使ったらとてもがぞう変更が楽になった
     func screenPictureSetter(_ indicator: Int) {
@@ -99,7 +98,7 @@ class ViewController: UIViewController {
         
         if isPlay {
             // 自動再生を開始する
-            self.timer = Timer.scheduledTimer(timeInterval: TimeInterval(Constants.init().interval2), target: self, selector: #selector(timerUpdate(_:)), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: TimeInterval(Constants.init().interval), target: self, selector: #selector(timerUpdate(_:)), userInfo: nil, repeats: true)
         } else {
             // 自動再生をやめる
             self.timer.invalidate()
@@ -110,6 +109,5 @@ class ViewController: UIViewController {
     @objc func timerUpdate(_ timer: Timer) {
         changePicture(1)
     }
-    
     
 }

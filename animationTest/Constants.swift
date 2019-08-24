@@ -11,15 +11,14 @@ import UIKit
 
 class Constants {
     // ボタンのイメージ
-    let startBtn2 = UIImage(named: "saisei.png")
-    let stopBtn2 = UIImage(named: "stop.jpg")
-    
+    let startBtn = UIImage(named: "saisei")
+    let stopBtn = UIImage(named: "stop")
     // ボタンの色
-    let activeBtnColor2 = UIColor.blue
-    let inactiveBtnColor2 = UIColor.gray
+    let activeBtnColor = UIColor.blue
+    let inactiveBtnColor = UIColor.gray
     
     // タイマー値 
-    var interval2:Double = 2
+    var interval:Double = 2
     
     // 初期画面から拡大画面
     var expanderSegue: String = "expander"
